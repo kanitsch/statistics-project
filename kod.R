@@ -37,14 +37,3 @@ ga <- function(budget, dim, domain, f) {
   return(result$best.y)
 }
 
-# Funkcja celu: sumowanie kwadratów zmiennych
-f <- function(x) sum(x^2)
-
-# Przestrzeń rozwiązań dla 2 wymiarów
-domain <- matrix(c(-5, 5, -5, 5), ncol = 2,byrow = TRUE)
-
-# Uruchomienie algorytmu genetycznego
-result <- ga(budget = 1000, dim = 2, domain = domain, f = f)
-
-# Wyświetlenie najmniejszej wartości funkcji celu
-print(result)
