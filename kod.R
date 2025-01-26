@@ -1,7 +1,6 @@
 library(smoof)
 library(ecr)
 
-
 prs <- function(budget,dim,domain,f){
   min_value <- Inf
   for (i in 1:budget){
@@ -36,4 +35,11 @@ ga <- function(budget, dim, domain, f) {
 
   return(result$best.y)
 }
+
+#przykladowe wywolanie funkcji
+
+f <- makeAckleyFunction(2)
+domain <- matrix(rep(c(-32.768, 32.768),2), ncol = 2, byrow = TRUE) #dziedzina musi być w postaci macierzy
+print(prs(1000,2,domain, f))
+print(ga(1000,2,domain,f))
 
