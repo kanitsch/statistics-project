@@ -54,22 +54,23 @@ compar <- function(f, dimensions, bounds, function_name) {
   return(list(prs = prs_results, ga = ga_results))
 }
 
-# Zakres dla Alpine 01 i Alpine 02
-alpine_bounds <- c(0, 10)
+#dziedzina
+alpine02_bounds <- c(0, 10)
+alpine01_bounds <- c(-10,10)
 
-# Funkcja Alpine 01
+#Alpine 01
 print("Funkcja Alpine 01")
-alpine01_2D <- compar(makeAlpine01Function(dimensions = 2), 2, alpine_bounds, "Alpine 01")
-alpine01_10D <- compar(makeAlpine01Function(dimensions = 10), 10, alpine_bounds, "Alpine 01")
-alpine01_20D <- compar(makeAlpine01Function(dimensions = 20), 20, alpine_bounds, "Alpine 01")
+alpine01_2D <- compar(makeAlpine01Function(dimensions = 2), 2, alpine01_bounds, "Alpine 01")
+alpine01_10D <- compar(makeAlpine01Function(dimensions = 10), 10, alpine01_bounds, "Alpine 01")
+alpine01_20D <- compar(makeAlpine01Function(dimensions = 20), 20, alpine01_bounds, "Alpine 01")
 
-# Funkcja Alpine 02
+#Alpine 02
 print("Funkcja Alpine 02")
-alpine02_2D <- compar(makeAlpine02Function(dimensions = 2), 2, alpine_bounds, "Alpine 02")
-alpine02_10D <- compar(makeAlpine02Function(dimensions = 10), 10, alpine_bounds, "Alpine 02")
-alpine02_20D <- compar(makeAlpine02Function(dimensions = 20), 20, alpine_bounds, "Alpine 02")
+alpine02_2D <- compar(makeAlpine02Function(dimensions = 2), 2, alpine02_bounds, "Alpine 02")
+alpine02_10D <- compar(makeAlpine02Function(dimensions = 10), 10, alpine02_bounds, "Alpine 02")
+alpine02_20D <- compar(makeAlpine02Function(dimensions = 20), 20, alpine02_bounds, "Alpine 02")
 
-# Analiza wyników
+# Wyniki
 print("Analiza wyników:")
 print("Alpine 01 2D")
 print(alpine01_2D)
