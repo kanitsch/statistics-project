@@ -1,24 +1,25 @@
 library(smoof)
 library(ecr)
 
-prs <- function(budget,dim,domain,f){
+# Funkcja PRS
+prs <- function(budget, dim, domain, f) {
   min_value <- Inf
-  for (i in 1:budget){
-    point <- runif(dim,domain[,1],domain[,2])
+  for (i in 1:budget) {
+    point <- runif(dim, domain[, 1], domain[, 2])
     value <- f(point)
-    if (value < min_value){
+    if (value < min_value) {
       min_value <- value
     }
   }
-  return (min_value)
+  return(min_value)
 }
 
+# Funkcja GA
 ga <- function(budget, dim, domain, f) {
-
   terminator <- stopOnEvals(max.evals = budget)
-  lower = domain[,1]
-  upper = domain[,2]
-
+  lower <- domain[, 1]
+  upper <- domain[, 2]
+  
   result <- ecr(
     fitness.fun = f,
     representation = "float",
@@ -30,16 +31,70 @@ ga <- function(budget, dim, domain, f) {
     mu = 50,
     lambda = 20,
     mutator = setup(mutGauss, sdev = 2, lower = lower, upper = upper),
-    terminators = list(terminator),
+    terminators = list(terminator)
   )
-
+  
   return(result$best.y)
 }
 
-#przykladowe wywolanie funkcji
+# Funkcja porównawcza
+compar_with_csv <- function(f, dimensions, bounds, function_name, file_prefix) {
+  print(paste("Funkcja:", function_name, "| Wymiary:", dimensions))
+  
+  domain <- matrix(rep(bounds, dimensions), ncol = 2, byrow = TRUE)
+  
+  prs_results <- replicate(50, prs(1000, dimensions, domain, f))
+  ga_results <- replicate(50, ga(1000, dimensions, domain, f))
+  
+  print("PRS:")
+  print(paste("Średnia wartość:", mean(prs_results)))
+  print("GA:")
+  print(paste("Średnia wartość:", mean(ga_results)))
+  
+  # Zapis do CSV
+  write.csv(prs_results, file = paste0("./data/", file_prefix, "_prs.csv"), row.names = FALSE)
+  write.csv(ga_results, file = paste0("./data/", file_prefix, "_ga.csv"), row.names = FALSE)
+  
+  return(list(prs = prs_results, ga = ga_results))
+}
 
-f <- makeAckleyFunction(2)
-domain <- matrix(rep(c(-32.768, 32.768),2), ncol = 2, byrow = TRUE) #dziedzina musi być w postaci macierzy
-print(prs(1000,2,domain, f))
-print(ga(1000,2,domain,f))
+# Tworzenie folderu na pliki CSV jeżeli nie istnieje
+if (!dir.exists("./data")) {
+  print("Utworzono folder")
+  dir.create("./data")
+}
+
+# Dziedziny funkcji
+alpine02_bounds <- c(0, 10)
+alpine01_bounds <- c(-10, 10)
+
+# Funkcja Alpine 01
+print("Funkcja Alpine 01")
+alpine01_2D <- compar_with_csv(makeAlpine01Function(dimensions = 2), 2, alpine01_bounds, "Alpine 01", "alpine01_2D")
+alpine01_10D <- compar_with_csv(makeAlpine01Function(dimensions = 10), 10, alpine01_bounds, "Alpine 01", "alpine01_10D")
+alpine01_20D <- compar_with_csv(makeAlpine01Function(dimensions = 20), 20, alpine01_bounds, "Alpine 01", "alpine01_20D")
+
+# Funkcja Alpine 02
+print("Funkcja Alpine 02")
+alpine02_2D <- compar_with_csv(makeAlpine02Function(dimensions = 2), 2, alpine02_bounds, "Alpine 02", "alpine02_2D")
+alpine02_10D <- compar_with_csv(makeAlpine02Function(dimensions = 10), 10, alpine02_bounds, "Alpine 02", "alpine02_10D")
+alpine02_20D <- compar_with_csv(makeAlpine02Function(dimensions = 20), 20, alpine02_bounds, "Alpine 02", "alpine02_20D")
+
+# Analiza wyników
+print("Analiza wyników:")
+print("Alpine 01 2D")
+print(alpine01_2D)
+print("Alpine 01 10D")
+print(alpine01_10D)
+print("Alpine 01 20D")
+print(alpine01_20D)
+
+print("Alpine 02 2D")
+print(alpine02_2D)
+print("Alpine 02 10D")
+print(alpine02_10D)
+print("Alpine 02 20D")
+print(alpine02_20D)
+
+
 
