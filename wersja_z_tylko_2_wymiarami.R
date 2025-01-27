@@ -1,5 +1,4 @@
-#Egghloder domyślnie jest zdefioniowany dla tylko 2 wymiarów, MakeEggHolder domyślnie w ogóle nie przyjmuje liczby wymiarów jako parametru, dlatego tutaj musiałem nadpisac funkcję MakeEggHolder (nie korzystam z tej z pakietu smooth), to trochę brzmi jak coś czego nie powinienem robić
-
+#Egghloder domyślnie jest zdefioniowany dla tylko 2 wymiarów dlatego tu zrobiłem EggHoldera tylko na 2 wymiarach
 library(smoof)
 library(ecr)
 
@@ -56,24 +55,7 @@ compar <- function(f, dimensions, bounds, function_name) {
   return(list(prs = prs_results, ga = ga_results))
 }
 
-# Funkcja wielowymiarowa EggHolder
-makeMultiEggHolderFunction <- function(dimensions) {
-  function(x) {
-    n <- length(x)
-    if (n != dimensions) stop("Dimensionality mismatch")
-    result <- 0
-    for (i in 1:(n-1)) {
-      xi <- x[i]
-      xi1 <- x[i+1]
-      result <- result + 
-        (-(xi1 + 47) * sin(sqrt(abs(xi1 + xi / 2 + 47))) - 
-           xi * sin(sqrt(abs(xi - (xi1 + 47)))))
-    }
-    return(result)
-  }
-}
-
-# Ustawienie granic dla funkcji
+# Funkcje testowe
 ackley_bounds <- c(-32.768, 32.768)
 eggholder_bounds <- c(-512, 512)
 
@@ -83,25 +65,11 @@ ackley2D <- compar(makeAckleyFunction(2), 2, ackley_bounds, "Ackley")
 ackley10D <- compar(makeAckleyFunction(10), 10, ackley_bounds, "Ackley")
 ackley20D <- compar(makeAckleyFunction(20), 20, ackley_bounds, "Ackley")
 
-# Funkcja Eggholder
+# Funkcja Eggholder (tylko 2D)
 print("Funkcja Eggholder")
 eggholder2D <- compar(makeEggholderFunction(), 2, eggholder_bounds, "Eggholder")
-eggholder10D <- compar(makeMultiEggHolderFunction(10), 10, eggholder_bounds, "Eggholder")
-eggholder20D <- compar(makeMultiEggHolderFunction(20), 20, eggholder_bounds, "Eggholder")
 
 # Analiza wyników
-print("Analiza wyników:")
-print("Ackley 2D")
-print(ackley2D)
-print("Ackley 10D")
-print(ackley10D)
-print("Ackley 20D")
-print(ackley20D)
-
-print("Eggholder 2D")
-print(eggholder2D)
-print("Eggholder 10D")
-print(eggholder10D)
-print("Eggholder 20D")
-print(eggholder20D)
+ackley2D
+eggholder2D
 
