@@ -38,7 +38,7 @@ ga <- function(budget, dim, domain, f) {
 }
 
 # Funkcja porównawcza
-compar <- function(f, dimensions, bounds, function_name) {
+compar_with_csv <- function(f, dimensions, bounds, function_name, file_prefix) {
   print(paste("Funkcja:", function_name, "| Wymiary:", dimensions))
   
   domain <- matrix(rep(bounds, dimensions), ncol = 2, byrow = TRUE)
@@ -51,26 +51,36 @@ compar <- function(f, dimensions, bounds, function_name) {
   print("GA:")
   print(paste("Średnia wartość:", mean(ga_results)))
   
+  # Zapis do CSV
+  write.csv(prs_results, file = paste0("./data/", file_prefix, "_prs.csv"), row.names = FALSE)
+  write.csv(ga_results, file = paste0("./data/", file_prefix, "_ga.csv"), row.names = FALSE)
+  
   return(list(prs = prs_results, ga = ga_results))
 }
 
-#dziedzina
+# Tworzenie folderu na pliki CSV jeżeli nie istnieje
+if (!dir.exists("./data")) {
+  print("Utworzono folder")
+  dir.create("./data")
+}
+
+# Dziedziny funkcji
 alpine02_bounds <- c(0, 10)
-alpine01_bounds <- c(-10,10)
+alpine01_bounds <- c(-10, 10)
 
-#Alpine 01
+# Funkcja Alpine 01
 print("Funkcja Alpine 01")
-alpine01_2D <- compar(makeAlpine01Function(dimensions = 2), 2, alpine01_bounds, "Alpine 01")
-alpine01_10D <- compar(makeAlpine01Function(dimensions = 10), 10, alpine01_bounds, "Alpine 01")
-alpine01_20D <- compar(makeAlpine01Function(dimensions = 20), 20, alpine01_bounds, "Alpine 01")
+alpine01_2D <- compar_with_csv(makeAlpine01Function(dimensions = 2), 2, alpine01_bounds, "Alpine 01", "alpine01_2D")
+alpine01_10D <- compar_with_csv(makeAlpine01Function(dimensions = 10), 10, alpine01_bounds, "Alpine 01", "alpine01_10D")
+alpine01_20D <- compar_with_csv(makeAlpine01Function(dimensions = 20), 20, alpine01_bounds, "Alpine 01", "alpine01_20D")
 
-#Alpine 02
+# Funkcja Alpine 02
 print("Funkcja Alpine 02")
-alpine02_2D <- compar(makeAlpine02Function(dimensions = 2), 2, alpine02_bounds, "Alpine 02")
-alpine02_10D <- compar(makeAlpine02Function(dimensions = 10), 10, alpine02_bounds, "Alpine 02")
-alpine02_20D <- compar(makeAlpine02Function(dimensions = 20), 20, alpine02_bounds, "Alpine 02")
+alpine02_2D <- compar_with_csv(makeAlpine02Function(dimensions = 2), 2, alpine02_bounds, "Alpine 02", "alpine02_2D")
+alpine02_10D <- compar_with_csv(makeAlpine02Function(dimensions = 10), 10, alpine02_bounds, "Alpine 02", "alpine02_10D")
+alpine02_20D <- compar_with_csv(makeAlpine02Function(dimensions = 20), 20, alpine02_bounds, "Alpine 02", "alpine02_20D")
 
-# Wyniki
+# Analiza wyników
 print("Analiza wyników:")
 print("Alpine 01 2D")
 print(alpine01_2D)
@@ -85,5 +95,6 @@ print("Alpine 02 10D")
 print(alpine02_10D)
 print("Alpine 02 20D")
 print(alpine02_20D)
+
 
 
