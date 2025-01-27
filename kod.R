@@ -1,5 +1,3 @@
-#Egghloder domyślnie jest zdefioniowany dla tylko 2 wymiarów, MakeEggHolder domyślnie w ogóle nie przyjmuje liczby wymiarów jako parametru, dlatego tutaj musiałem nadpisac funkcję MakeEggHolder (nie korzystam z tej z pakietu smooth), to trochę brzmi jak coś czego nie powinienem robić
-
 library(smoof)
 library(ecr)
 
@@ -56,52 +54,35 @@ compar <- function(f, dimensions, bounds, function_name) {
   return(list(prs = prs_results, ga = ga_results))
 }
 
-# Funkcja wielowymiarowa EggHolder
-makeMultiEggHolderFunction <- function(dimensions) {
-  function(x) {
-    n <- length(x)
-    if (n != dimensions) stop("Dimensionality mismatch")
-    result <- 0
-    for (i in 1:(n-1)) {
-      xi <- x[i]
-      xi1 <- x[i+1]
-      result <- result + 
-        (-(xi1 + 47) * sin(sqrt(abs(xi1 + xi / 2 + 47))) - 
-           xi * sin(sqrt(abs(xi - (xi1 + 47)))))
-    }
-    return(result)
-  }
-}
+# Zakres dla Alpine 01 i Alpine 02
+alpine_bounds <- c(0, 10)
 
-# Ustawienie granic dla funkcji
-ackley_bounds <- c(-32.768, 32.768)
-eggholder_bounds <- c(-512, 512)
+# Funkcja Alpine 01
+print("Funkcja Alpine 01")
+alpine01_2D <- compar(makeAlpine01Function(dimensions = 2), 2, alpine_bounds, "Alpine 01")
+alpine01_10D <- compar(makeAlpine01Function(dimensions = 10), 10, alpine_bounds, "Alpine 01")
+alpine01_20D <- compar(makeAlpine01Function(dimensions = 20), 20, alpine_bounds, "Alpine 01")
 
-# Funkcja Ackley
-print("Funkcja Ackleya")
-ackley2D <- compar(makeAckleyFunction(2), 2, ackley_bounds, "Ackley")
-ackley10D <- compar(makeAckleyFunction(10), 10, ackley_bounds, "Ackley")
-ackley20D <- compar(makeAckleyFunction(20), 20, ackley_bounds, "Ackley")
-
-# Funkcja Eggholder
-print("Funkcja Eggholder")
-eggholder2D <- compar(makeEggholderFunction(), 2, eggholder_bounds, "Eggholder")
-eggholder10D <- compar(makeMultiEggHolderFunction(10), 10, eggholder_bounds, "Eggholder")
-eggholder20D <- compar(makeMultiEggHolderFunction(20), 20, eggholder_bounds, "Eggholder")
+# Funkcja Alpine 02
+print("Funkcja Alpine 02")
+alpine02_2D <- compar(makeAlpine02Function(dimensions = 2), 2, alpine_bounds, "Alpine 02")
+alpine02_10D <- compar(makeAlpine02Function(dimensions = 10), 10, alpine_bounds, "Alpine 02")
+alpine02_20D <- compar(makeAlpine02Function(dimensions = 20), 20, alpine_bounds, "Alpine 02")
 
 # Analiza wyników
 print("Analiza wyników:")
-print("Ackley 2D")
-print(ackley2D)
-print("Ackley 10D")
-print(ackley10D)
-print("Ackley 20D")
-print(ackley20D)
+print("Alpine 01 2D")
+print(alpine01_2D)
+print("Alpine 01 10D")
+print(alpine01_10D)
+print("Alpine 01 20D")
+print(alpine01_20D)
 
-print("Eggholder 2D")
-print(eggholder2D)
-print("Eggholder 10D")
-print(eggholder10D)
-print("Eggholder 20D")
-print(eggholder20D)
+print("Alpine 02 2D")
+print(alpine02_2D)
+print("Alpine 02 10D")
+print(alpine02_10D)
+print("Alpine 02 20D")
+print(alpine02_20D)
+
 
