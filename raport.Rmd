@@ -1,0 +1,30 @@
+---
+title: "Projekt zaliczeniowy"
+author: "Patryk Blacha, Karolina Nitsch"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Wstęp
+# Wyniki
+``` {r echo=FALSE}
+alpine01ga2D <- as.vector(read.csv("./data/alpine01_2D_ga.csv"))$x
+alpine01prs2D <- as.vector(read.csv("./data/alpine01_2D_prs.csv"))$x
+alpine01ga10D <- as.vector(read.csv("./data/alpine01_10D_ga.csv"))$x
+alpine01prs10D <- as.vector(read.csv("./data/alpine01_10D_prs.csv"))$x
+alpine01ga20D <- as.vector(read.csv("./data/alpine01_20D_ga.csv"))$x
+alpine01prs20D <- as.vector(read.csv("./data/alpine01_20D_prs.csv"))$x
+alpine02ga2D <- as.vector(read.csv("./data/alpine02_2D_ga.csv"))$x
+alpine02prs2D <- as.vector(read.csv("./data/alpine02_2D_prs.csv"))$x
+alpine02ga10D <- as.vector(read.csv("./data/alpine02_10D_ga.csv"))$x
+alpine02prs10D <- as.vector(read.csv("./data/alpine02_10D_prs.csv"))$x
+alpine02ga20D <- as.vector(read.csv("./data/alpine02_20D_ga.csv"))$x
+alpine02prs20D <- as.vector(read.csv("./data/alpine02_20D_prs.csv"))$x
+
+```
+
+## Alpine01 2D
+* PRS: `r mean(alpine01prs2D)`
+* GA: `r mean (alpine01ga2D)`
+
+
