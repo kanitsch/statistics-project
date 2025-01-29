@@ -26,93 +26,50 @@ alpine02prs20D <- as.vector(read.csv("./data/alpine02_20D_prs.csv"))$x
 ## Alpine01 2D
 ### PRS: 
 * średnia: `r mean(alpine01prs2D)`
-* wartość najmniejsza: `r min(alpine01prs2D)`
-* wartość największa: `r max(alpine01prs2D)`
-* mediana: `r median(alpine01prs2D)`
 
 ### GA: 
 * średnia: `r mean(alpine01ga2D)`
-* wartość najmniejsza: `r format(min(alpine01ga2D), scientific=TRUE)`
-* wartość największa: `r max(alpine01ga2D)`
-* mediana: `r median(alpine01ga2D)`
 
 ## Alpine01 10D
 ### PRS: 
 * średnia: `r mean(alpine01prs10D)`
-* wartość najmniejsza: `r min(alpine01prs10D)`
-* wartość największa: `r max(alpine01prs10D)`
-* mediana: `r median(alpine01prs10D)`
 
 ### GA: 
 * średnia: `r mean(alpine01ga10D)`
-* wartość najmniejsza: `r min(alpine01ga10D)`
-* wartość największa: `r max(alpine01ga10D)`
-* mediana: `r median(alpine01ga10D)`
 
 ## Alpine01 20D
 ### PRS: 
 * średnia: `r mean(alpine01prs20D)`
-* wartość najmniejsza: `r min(alpine01prs20D)`
-* wartość największa: `r max(alpine01prs20D)`
-* mediana: `r median(alpine01prs20D)`
 
 ### GA: 
 * średnia: `r mean(alpine01ga20D)`
-* wartość najmniejsza: `r min(alpine01ga20D)`
-* wartość największa: `r max(alpine01ga20D)`
-* mediana: `r median(alpine01ga20D)`
 
 ## Alpine02 2D
 ### PRS: 
 * średnia: `r mean(alpine02prs2D)`
-* wartość najmniejsza: `r min(alpine02prs2D)`
-* wartość największa: `r max(alpine02prs2D)`
-* mediana: `r median(alpine02prs2D)`
 
 ### GA: 
 * średnia: `r mean(alpine02ga2D)`
-* wartość najmniejsza: `r min(alpine02ga2D)`
-* wartość największa: `r max(alpine02ga2D)`
-* mediana: `r median(alpine02ga2D)`
 
 ## Alpine02 10D
 ### PRS: 
 * średnia: `r mean(alpine02prs10D)`
-* wartość najmniejsza: `r min(alpine02prs10D)`
-* wartość największa: `r max(alpine02prs10D)`
-* mediana: `r median(alpine02prs10D)`
 
 ### GA: 
 * średnia: `r mean(alpine02ga10D)`
-* wartość najmniejsza: `r min(alpine02ga10D)`
-* wartość największa: `r max(alpine02ga10D)`
-* mediana: `r median(alpine02ga10D)`
 
 ## Alpine02 20D
 <!-- ### PRS:  -->
 <!-- * średnia: `r mean(alpine02prs20D)` -->
-<!-- * wartość najmniejsza: `r min(alpine02prs20D)` -->
-<!-- * wartość największa: `r max(alpine02prs20D)` -->
-<!-- * mediana: `r median(alpine02prs20D)` -->
 
 <!-- ### GA:  -->
 <!-- * średnia: `r mean(alpine02ga20D)` -->
-<!-- * wartość najmniejsza: `r min(alpine02ga20D)` -->
-<!-- * wartość największa: `r max(alpine02ga20D)` -->
-<!-- * mediana: `r median(alpine02ga20D)` -->
 
 ### PRS:
 * średnia: `r format(mean(alpine02prs20D), scientific = TRUE)`
-* wartość najmniejsza: `r format(min(alpine02prs20D), scientific = TRUE)`
-* wartość największa: `r format(max(alpine02prs20D), scientific = TRUE)`
-* mediana: `r format(median(alpine02prs20D), scientific = TRUE)`
 
 ### GA:
 * średnia: `r format(mean(alpine02ga20D), scientific = TRUE)`
-* wartość najmniejsza: `r format(min(alpine02ga20D), scientific = TRUE)`
-* wartość największa: `r format(max(alpine02ga20D), scientific = TRUE)`
-* mediana: `r format(median(alpine02ga20D), scientific = TRUE)`
-
 
 ## Histogramy
 
@@ -219,3 +176,4 @@ t.test(x = alpine02prs20D, y = alpine02ga20D, paired = TRUE)
 ```
 
 ### Wniosek:
+GA okazało się istotnie lepsze dla funkcji Alpine01 we wszystkich badanych wymiarach. Dla funkcji Alpine02 istotną różnicę odnotowaliśmy jedynie dla 2 wymiarów. Podsumowując na podstawie przeprowadzonych testów można stwierdzić że algorytm genetyczny(GA) w większośći przypadków osiąga lepsze wyniki niż metoda czysto losowa(PRS).
