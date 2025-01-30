@@ -8,15 +8,14 @@ output: pdf_document
 # Wstęp
 Projekt polegał na opracowaniu statystycznym wyników porównania działania wybranych algorytmów minimalizacji stochastycznej. Do porównania wybraliśmy:
 
-
 * Algorytmy:
   - Poszukiwanie przypadkowe (Pure Random Search, PRS)
   - Algorytm genetyczny (GA) - implementacja z pakietu ecr dostępnego w CRAN
   
   
 * Funkcje:
-  - Alpine01 (Minimum globalne: $f_{\min} = 0$)
-  - Alpine02 (Minimum globalne: $f_{\min}(n) \approx (-1) \cdot 6.1295^{\lfloor n / 2 \rfloor} \cdot 2.1828^{(n \bmod 2)}$, gdzie n to liczba wymiarów
+  - Alpine01 ($f_{\min} = 0$)
+  - Alpine02 ($f_{\min}(n) \approx (-1) \cdot 6.1295^{\lfloor n / 2 \rfloor} \cdot 2.1828^{(n \bmod 2)}$, n - liczba wymiarów
 )
 
 # Wyniki
