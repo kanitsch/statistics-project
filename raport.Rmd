@@ -15,7 +15,8 @@ Projekt polegał na opracowaniu statystycznym wyników porównania działania wy
   
 * Funkcje:
   - Alpine01 ($f_{\min} = 0$)
-  - Alpine02 ($f_{\min}(n) \approx (-1) \cdot 6.1295^{\lfloor n / 2 \rfloor} \cdot 2.1828^{(n \bmod 2)}$, n - liczba wymiarów
+  - Alpine02 ($f_{\min}(n) \approx -2.18277 \cdot 2.80813^{n-1}$
+, n - liczba wymiarów
 )
 
 # Wyniki
