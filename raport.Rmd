@@ -39,50 +39,120 @@ alpine02prs20D <- as.vector(read.csv("./data/alpine02_20D_prs.csv"))$x
 ## Alpine01 2D
 ### PRS: 
 * średnia: `r mean(alpine01prs2D)`
+* wartość najmniejsza: `r min(alpine01prs2D)`
+* wartość największa: `r max(alpine01prs2D)`
+* mediana: `r median(alpine01prs2D)`
+* dolny kwartyl: `r quantile(alpine01prs2D, 0.25)`
+* górny kwartyl: `r quantile(alpine01prs2D, 0.75)`
 
 ### GA: 
 * średnia: `r mean(alpine01ga2D)`
+* wartość najmniejsza: `r format(min(alpine01ga2D), scientific=TRUE)`
+* wartość największa: `r max(alpine01ga2D)`
+* mediana: `r median(alpine01ga2D)`
+* dolny kwartyl: `r format(quantile(alpine01ga2D, 0.25), scientific=TRUE)`
+* górny kwartyl: `r quantile(alpine01ga2D, 0.75)`
 
 ## Alpine01 10D
 ### PRS: 
 * średnia: `r mean(alpine01prs10D)`
+* wartość najmniejsza: `r min(alpine01prs10D)`
+* wartość największa: `r max(alpine01prs10D)`
+* mediana: `r median(alpine01prs10D)`
+* dolny kwartyl: `r quantile(alpine01prs10D, 0.25)`
+* górny kwartyl: `r quantile(alpine01prs10D, 0.75)`
 
 ### GA: 
 * średnia: `r mean(alpine01ga10D)`
+* wartość najmniejsza: `r min(alpine01ga10D)`
+* wartość największa: `r max(alpine01ga10D)`
+* mediana: `r median(alpine01ga10D)`
+* dolny kwartyl: `r quantile(alpine01ga10D, 0.25)`
+* górny kwartyl: `r quantile(alpine01ga10D, 0.75)`
 
 ## Alpine01 20D
 ### PRS: 
 * średnia: `r mean(alpine01prs20D)`
+* wartość najmniejsza: `r min(alpine01prs20D)`
+* wartość największa: `r max(alpine01prs20D)`
+* mediana: `r median(alpine01prs20D)`
+* dolny kwartyl: `r quantile(alpine01prs20D, 0.25)`
+* górny kwartyl: `r quantile(alpine01prs20D, 0.75)`
 
 ### GA: 
 * średnia: `r mean(alpine01ga20D)`
+* wartość najmniejsza: `r min(alpine01ga20D)`
+* wartość największa: `r max(alpine01ga20D)`
+* mediana: `r median(alpine01ga20D)`
+* dolny kwartyl: `r quantile(alpine01ga20D, 0.25)`
+* górny kwartyl: `r quantile(alpine01ga20D, 0.75)`
 
 ## Alpine02 2D
 ### PRS: 
 * średnia: `r mean(alpine02prs2D)`
+* wartość najmniejsza: `r min(alpine02prs2D)`
+* wartość największa: `r max(alpine02prs2D)`
+* mediana: `r median(alpine02prs2D)`
+* dolny kwartyl: `r quantile(alpine02prs2D, 0.25)`
+* górny kwartyl: `r quantile(alpine02prs2D, 0.75)`
 
 ### GA: 
 * średnia: `r mean(alpine02ga2D)`
+* wartość najmniejsza: `r min(alpine02ga2D)`
+* wartość największa: `r max(alpine02ga2D)`
+* mediana: `r median(alpine02ga2D)`
+* dolny kwartyl: `r quantile(alpine02ga2D, 0.25)`
+* górny kwartyl: `r quantile(alpine02ga2D, 0.75)`
 
 ## Alpine02 10D
 ### PRS: 
 * średnia: `r mean(alpine02prs10D)`
+* wartość najmniejsza: `r min(alpine02prs10D)`
+* wartość największa: `r max(alpine02prs10D)`
+* mediana: `r median(alpine02prs10D)`
+* dolny kwartyl: `r quantile(alpine02prs10D, 0.25)`
+* górny kwartyl: `r quantile(alpine02prs10D, 0.75)`
 
 ### GA: 
 * średnia: `r mean(alpine02ga10D)`
+* wartość najmniejsza: `r min(alpine02ga10D)`
+* wartość największa: `r max(alpine02ga10D)`
+* mediana: `r median(alpine02ga10D)`
+* dolny kwartyl: `r quantile(alpine02ga10D, 0.25)`
+* górny kwartyl: `r quantile(alpine02ga10D, 0.75)`
 
 ## Alpine02 20D
 <!-- ### PRS:  -->
 <!-- * średnia: `r mean(alpine02prs20D)` -->
+<!-- * wartość najmniejsza: `r min(alpine02prs20D)` -->
+<!-- * wartość największa: `r max(alpine02prs20D)` -->
+<!-- * mediana: `r median(alpine02prs20D)` -->
+<!-- * dolny kwartyl: `r quantile(alpine02prs20D, 0.25)` -->
+<!-- * górny kwartyl: `r quantile(alpine02prs20D, 0.75)` -->
 
 <!-- ### GA:  -->
 <!-- * średnia: `r mean(alpine02ga20D)` -->
-
+<!-- * wartość najmniejsza: `r min(alpine02ga20D)` -->
+<!-- * wartość największa: `r max(alpine02ga20D)` -->
+<!-- * mediana: `r median(alpine02ga20D)` -->
+<!-- * dolny kwartyl: `r quantile(alpine02ga20D, 0.25)` -->
+<!-- * górny kwartyl: `r quantile(alpine02ga20D, 0.75)` -->
 ### PRS:
 * średnia: `r format(mean(alpine02prs20D), scientific = TRUE)`
+* wartość najmniejsza: `r format(min(alpine02prs20D), scientific = TRUE)`
+* wartość największa: `r format(max(alpine02prs20D), scientific = TRUE)`
+* mediana: `r format(median(alpine02prs20D), scientific = TRUE)`
+* dolny kwartyl: `r format(quantile(alpine02prs20D, 0.25), scientific = TRUE)`
+* górny kwartyl: `r format(quantile(alpine02prs20D, 0.75), scientific = TRUE)`
 
 ### GA:
 * średnia: `r format(mean(alpine02ga20D), scientific = TRUE)`
+* wartość najmniejsza: `r format(min(alpine02ga20D), scientific = TRUE)`
+* wartość największa: `r format(max(alpine02ga20D), scientific = TRUE)`
+* mediana: `r format(median(alpine02ga20D), scientific = TRUE)`
+* dolny kwartyl: `r format(quantile(alpine02ga20D, 0.25), scientific = TRUE)`
+* górny kwartyl: `r format(quantile(alpine02ga20D, 0.75), scientific = TRUE)`
+
 
 ## Histogramy
 
